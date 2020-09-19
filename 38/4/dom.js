@@ -35,6 +35,15 @@ removeChild : 指定した子要素を削除
 html要素.addEventListner(きっかけ, 関数)
 */
 
-removeButton.addEventListener('click', () => {
-  ulTag.removeChild(ulTag.lastElementChild);
+removeButton.addEventListener('click', (event) => {
+  const listItems = document.querySelectorAll('li');
+  if (listItems.length > 0) {
+    ulTag.removeChild(ulTag.lastElementChild);
+  }
+});
+
+// event
+const form = document.getElementById('form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // HTMLのデフォルトの挙動をキャンセル
 });
