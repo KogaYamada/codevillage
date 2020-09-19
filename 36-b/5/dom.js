@@ -4,10 +4,17 @@
 // HTML要素を取得する
 // 要素に対して何かする
 
+// 9/16
+// event.target
+
 // ulリストを取得
+// 要素を取得する
 const ul = document.querySelector('.list');
 const title = document.getElementById('title');
 const deleteButton = document.getElementById('button');
+const addButton = document.getElementById('addButton');
+const input = document.getElementById('input');
+const form = document.getElementById('form');
 
 title.textContent = 'DOMです';
 
@@ -19,6 +26,21 @@ deleteButton.addEventListener('click', () => {
   if (li.length > 0) {
     ul.removeChild(ul.lastElementChild);
   }
+});
+
+addButton.addEventListener('click', (event) => {
+  const item = document.createElement('li');
+  item.textContent = 'もも';
+  ul.appendChild(item);
+});
+
+form.addEventListener('submit', (event) => {
+  // formを送信したときに再読み込みをキャンセルする必要がある。
+  // HTML要素の持っているデフォルトの挙動をキャンセルする
+  // form => リロード(再読み込み)が入る
+  // a => hrefに指定したurlにジャンプする
+  // eventと言うオブジェクトのpreventDefault関数
+  event.preventDefault();
 });
 
 // 新しいli要素を作成
@@ -47,3 +69,5 @@ ex) appendChild(要素)
 要素の削除
 - 親要素.removeChild: 子要素を削除
 */
+
+// 仮想DOM
