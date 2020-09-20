@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = () => {
+const Form = ({ addTodo }) => {
   const [text, setText] = useState('');
   const handleTextChange = (e) => {
     setText(e.target.value);
@@ -8,7 +8,14 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(text);
+    // バリデーション(検証):validation
+    if (text.trim().length <= 0) {
+      alert('文字を入力してください');
+      return;
+    }
+    addTodo(text);
+    // 2. inputの値を空にする
+    setText('');
   };
 
   return (

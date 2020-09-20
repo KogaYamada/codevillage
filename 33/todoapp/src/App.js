@@ -1,5 +1,6 @@
 // 外のファイルのなにかを使えるようにする
 import React, { useState } from 'react';
+import shortid from 'shortid';
 
 import Form from './Form';
 import Title from './Title';
@@ -9,16 +10,27 @@ const App = () => {
   // props: 親コンポーネントから子コンポーネントに値を渡す
   const username = 'koga';
   const [todos, setTodos] = useState([
-    { content: '洗濯する' },
-    { content: '掃除する' },
-    { content: '料理する' },
-    { content: 'うんどうする' },
+    { content: '洗濯する', id: shortid.generate() },
+    { content: '掃除する', id: shortid.generate() },
+    { content: '料理する', id: shortid.generate() },
   ]);
+  // textと言う引数を受け取ってtodosに追加する
+  const addTodo = (text) => {
+    setTodos([...todos, { content: text, id: shortid.generate() }]);
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(
+      todos.filter((todo) => {
+        return todo.id !== id;
+      })
+    );
+  };
   return (
     <>
       <Title name={username} />
-      <Form />
-      <List todos={todos} />
+      <Form addTodo={addTodo} />
+      <List deleteTodo={deleteTodo} todos={todos} />
     </>
   );
 };
