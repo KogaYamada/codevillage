@@ -1,10 +1,19 @@
 import React from 'react';
+import Item from './Item';
 
-const List = () => {
+const List = ({ todos, deleteTodo }) => {
   return (
     <ul>
-      <li>掃除</li>
-      <li>料理</li>
+      {todos.map((todo) => {
+        return (
+          <Item
+            key={todo.id}
+            id={todo.id}
+            deleteTodo={deleteTodo}
+            content={todo.content}
+          />
+        );
+      })}
     </ul>
   );
 };

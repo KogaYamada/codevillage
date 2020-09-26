@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Form = ({ changeName }) => {
+// 入力内容が送信されたらinputの値リセットして欲しい
+// 空では送信できないようにする
+
+const Form = ({ addTodo }) => {
+  const [text, setText] = useState('');
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim().length !== 0) {
+      addTodo(text);
+      setText('');
+    } else {
+      alert('文字を入力してください');
+    }
+  };
   return (
-    <form onSubmit={changeName}>
-      <input />
+    <form onSubmit={handleSubmit}>
+      <input value={text} onChange={handleTextChange} />
       <button>送信</button>
     </form>
   );
