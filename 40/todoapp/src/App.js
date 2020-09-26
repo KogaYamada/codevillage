@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+// コンポーネントをインポート(作成したコンポーネントは相対パス)
+import Title from './Title';
+import Form from './Form';
+import List from './List';
+
+const App = () => {
+  // 次回propsから
+  const name = 'koga';
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Title />
+      <Form />
+      <List />
+    </React.Fragment>
   );
-}
+};
 
 export default App;
