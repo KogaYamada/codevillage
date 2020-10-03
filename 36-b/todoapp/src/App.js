@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import shortid from 'shortid';
 
 // 自分で作ったファイルは相対パスでインポート
 import Title from './Title';
@@ -15,20 +16,25 @@ const App = () => {
     setUsername('じろう');
   };
   const [todos, setTodos] = useState([
-    { content: '掃除' },
-    { content: '洗濯' },
-    { content: '運動' },
+    { content: '掃除', id: shortid.generate() },
+    { content: '洗濯', id: shortid.generate() },
+    { content: '運動', id: shortid.generate() },
   ]);
+  console.log(todos);
 
   const addTodo = (text) => {
     // スプレッド構文
-    setTodos([...todos, { content: text }]);
+    setTodos([...todos, { content: text, id: shortid.generate() }]);
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <>
       <Title name={username} />
-      <List todos={todos} />
+      <List deleteTodo={deleteTodo} todos={todos} />
       <Form addTodo={addTodo} />
       <button onClick={changeName}>名前が変わるボタン</button>
     </>

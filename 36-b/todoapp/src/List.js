@@ -1,12 +1,21 @@
 import React from 'react';
 
-const List = ({ todos }) => {
+import Item from './Item';
+
+const List = ({ todos, deleteTodo }) => {
   return (
     <React.Fragment>
       <p>やることリスト</p>
       <ul>
-        {todos.map((todo, index) => {
-          return <li key={index}>{todo.content}</li>;
+        {todos.map((todo) => {
+          return (
+            <Item
+              deleteTodo={deleteTodo}
+              key={todo.id}
+              id={todo.id}
+              content={todo.content}
+            />
+          );
         })}
       </ul>
     </React.Fragment>

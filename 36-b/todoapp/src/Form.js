@@ -7,10 +7,15 @@ const Form = ({ addTodo }) => {
   };
 
   // 1. 送信したタイミングで入力している内容を削除する
-  // 2. 何も入力されていないときにTodosに追加しない + alertで注意する
+  // 2. 何も入力されていないときにTodosに追加しない + alertで注意する:validatoin
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (text.length === 0) {
+      alert('文字を入力してください');
+      return;
+    }
     addTodo(text);
+    setText('');
   };
   return (
     <form onSubmit={handleSubmit}>

@@ -132,6 +132,4 @@ const userAge = 22;
 
 if (userAge >= 20) {
   console.log('お酒飲めます');
-} else {
-  console.log('お酒飲めません');
 }
