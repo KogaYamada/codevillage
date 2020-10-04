@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Form = () => {
+const Form = ({ addTodo }) => {
+  const [text, setText] = useState('');
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim().length === 0) {
+      alert('文字を入力してください');
+      return;
+    }
+    addTodo(text);
+    setText('');
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>TODOを追加</label>
-      <input />
-      <button type="button">追加</button>
+      <input value={text} onChange={handleTextChange} />
+      <button type="submit">追加</button>
     </form>
   );
 };

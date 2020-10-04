@@ -1,13 +1,13 @@
 import React from 'react';
 
-const List = () => {
+const List = ({ todos }) => {
   return (
     <React.Fragment>
       <h3>やることリスト</h3>
       <ul>
-        <li>掃除をする</li>
-        <li>洗濯をする</li>
-        <li>料理をする</li>
+        {todos.map((todo, index) => {
+          return <li key={index}>{todo.content}</li>;
+        })}
       </ul>
     </React.Fragment>
   );

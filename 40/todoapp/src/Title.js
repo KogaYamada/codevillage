@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Title = () => {
+const Title = ({ name }) => {
+  console.log(name);
   return (
     <React.Fragment>
       <h1>Todo App!</h1>
-      <h2 className="title">ようこそ{'name'}さん</h2>
+      <h2 className="title">ようこそ{name}さん</h2>
     </React.Fragment>
   );
 };
