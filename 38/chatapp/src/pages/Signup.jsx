@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { auth } from '../firebase';
 
 const useStyles = makeStyles({
@@ -19,17 +19,30 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const classes = useStyles();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     auth
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('登録成功');
+      .then((response) => {
+        // 成功したとき
+        response.user
+          .updateProfile({
+            displayName: username,
+          }).then(() => {
+            // updateProfileが終わった後
+            setLoading(false);
+            history.push("/");
+          })
       })
-      .catch((e) => {
-        console.log('登録失敗', e);
+      .catch((error) => {
+        // 失敗したとき
+        console.log('登録失敗', error);
+        setLoading(false)
       });
   };
 
@@ -62,7 +75,7 @@ const Signup = () => {
             setPassword(e.target.value);
           }}
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button disabled={ loading } type="submit" variant="contained" color="primary">
           登録
         </Button>
       </form>
