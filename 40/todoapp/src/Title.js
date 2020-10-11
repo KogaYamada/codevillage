@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Title = ({ name }) => {
-  console.log(name);
   return (
     <React.Fragment>
       <h1>Todo App!</h1>
