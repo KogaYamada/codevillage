@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
+import {Route, Redirect} from "react-router-dom"
+import {AuthContext} from "./AuthService"
 
-// ログインしてたらRoomへ。していなかったらLoginへ
-const LoggedInRoute = () => {
+const LoggedInRoute = ({component: Component, ...otherProps}) => {
+	const user = useContext(AuthContext)
   return (
-    <>
-      aaa
-    </>
+    <Route
+			{...otherProps}
+			render={(props) => {
+				return user ? (
+					<Component {...props} />
+				):(
+					<Redirect to="/login" />
+				)
+			}}
+		/>
   );
 };
 

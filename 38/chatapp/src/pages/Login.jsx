@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { auth } from "../firebase"
+import {AuthContext} from "../components/AuthService";
 
 const useStyles = makeStyles({
   container: {
@@ -18,7 +19,8 @@ const useStyles = makeStyles({
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(false)
+	const user = useContext(AuthContext)
   const classes = useStyles();
   const history = useHistory();
 
@@ -27,15 +29,17 @@ const Login = () => {
     setLoading(true);
     auth.signInWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log("ログイン成功", response);
         setLoading(false);
-        history.push("/");
+				history.push("/");
       })
       .catch((error) => {
         console.error("ログイン失敗", error);
         setLoading(false);
       });
-  }
+	}
+	if(user) {
+		return <Redirect to="/" />
+	}
 
   return (
     <div className={classes.container}>
