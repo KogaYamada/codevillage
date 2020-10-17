@@ -16,5 +16,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default firebase;
+// firebaseの認証機能
 export const auth = firebase.auth();
+// データベース(firestore)の機能
 export const db = firebase.firestore();
+
