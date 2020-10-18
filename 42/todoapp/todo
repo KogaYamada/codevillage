@@ -1,0 +1,18 @@
+1. npx create-react-app todoappを実行
+2. happy hackingが表示される
+3. cd todoapp を実行
+4. npm start を実行
+5. 作成されたフォルダ(todoapp)をvscodeで開く
+
+npm と yarn
+それぞれはパッケージマネージャ
+どっちを使ってもよい
+違いはコマンドだけ
+ex)
+パッケージのインストール時
+npm install パッケージ名
+yarn add パッケージ名
+
+次週は
+1. 全員の環境構築ができていることを確認
+2. reactの説明

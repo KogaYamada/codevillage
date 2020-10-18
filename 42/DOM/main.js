@@ -18,7 +18,9 @@ title.textContent = 'DOMだよ';
 
 /* 要素の情報の更新
  - 更新はオブジェクトのプロパティを書き換えるのと同じ要領で行う
- ex) textContent, innnerHTML
+ ex) textContent, innerHTML
+
+ 要素.プロパティ = "変更したい値"
 */
 
 /* 要素の作成
@@ -44,8 +46,21 @@ list.appendChild(item);
 */
 const deleteButton = document.getElementById('button');
 deleteButton.addEventListener('click', () => {
-  list.removeChild(list.firstElementChild);
+	// 削除ボタン押した時の処理
+	const items = document.querySelectorAll("li")
+	if(items.length !== 0) {
+		// liタグの要素の数が0の時は実行されない
+		list.removeChild(list.firstElementChild);
+	}
 });
+
+// 削除ボタンを押した時のエラーを解消
+// なんのエラーか
+// 削除する要素がないのでエラーが出る
+
+// 16分くらいまで↑のエラー解消
+// - if文を使うよ
+// - 条件式はli要素の数が0の時などを使うよ
 
 // イベントって？
 // きっかけ、タイミング
@@ -53,8 +68,8 @@ deleteButton.addEventListener('click', () => {
 
 // javascriptの命名について
 // キャメルケース
- const getelementById
- const getElementById
+//  const getelementById
+//  const getElementById
 
  // スネークケース python
  // get_element_by_id
