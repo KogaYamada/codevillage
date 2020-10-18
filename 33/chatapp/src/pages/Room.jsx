@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {AuthContext} from "../context/AuthService"
+import {auth} from "../firebase"
 
 const Room = () => {
-  return <h1>Room Page</h1>;
+	const some = useContext(AuthContext)
+  return <div><button onClick={()=> auth.signOut()}>logout</button></div>;
 };
 
 export default Room;
