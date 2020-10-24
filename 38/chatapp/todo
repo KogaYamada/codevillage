@@ -1,0 +1,12 @@
+## chatアプリ追加課題
+
+- チャットのmessagesの並び順がバラバラなので投稿時間順に並べる
+    - firestoreのorderByメソッドでできる(https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=ja)
+- validation
+    - メッセージの入力欄に何も入力していなくても追加できてしまう問題を解消
+- メッセージを送信したら入力欄が空になるようにする
+
+## todoアプリの追加課題
+
+現在、stateisDoneはItemコンポーネントで管理されています。
+今後のデータベースの実装に備えて、isDoneをAppコンポーネント(todos)で管理するようにコードを修正して下さい。
