@@ -1,9 +1,11 @@
-import React from "react";
-import {BrowserRouter, Switch, Route} from "react-router-dom"
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthService';
+import LoggedInRoute from './components/LoggedInRoute';
 
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Room from "./pages/Room";
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Room from './pages/Room';
 
 // routing (react-router-dom)
 // URLのエンドポイント(/xxxx)によって表示するページを変える
@@ -15,13 +17,15 @@ import Room from "./pages/Room";
 
 const App = () => {
   return (
-    <BrowserRouter>
-			<Switch>
-				<Route exact path="/" component={Room} />
-				<Route exact path="/login" component={Login} />
-				<Route exact path="/signup" component={Signup} />
-			</Switch>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Switch>
+          <LoggedInRoute exact path='/' component={Room} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 
