@@ -1,0 +1,18 @@
+課題 (追加演習)
+
+## Chatアプリ
+
+- メッセージを投稿順で表示させる(firestoreのcreatedAt)
+    - orderByメソッドを使用(https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=ja)
+
+- メッセージが送信された後に入力欄が空になるようにする
+
+- メッセージが空では送信できないようにする
+
+- コンポーネント分けをする
+
+
+## TODOアプリ
+
+現在、stateisDoneはItemコンポーネントで管理されています。
+今後のデータベースの実装に備えて、isDoneをAppコンポーネント(todos)で管理するようにコードを修正して下さい。
