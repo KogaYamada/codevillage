@@ -16,3 +16,11 @@ yarn add パッケージ名
 次週は
 1. 全員の環境構築ができていることを確認
 2. reactの説明
+
+Reactの起動方法
+ターミナルで
+ - npm start
+ - yarn start 
+
+
+

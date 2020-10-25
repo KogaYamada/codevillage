@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Title from './Title';
+import List from './List';
+import Form from './Form';
+
+const App = () => {
+  const name = 'こうが';
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Title />
+      <List />
+      <Form />
+    </React.Fragment>
   );
-}
-
+};
 export default App;
+
+// export: 作成した値を別ファイルで使えるようにする
+// import: exportした値を使用する
