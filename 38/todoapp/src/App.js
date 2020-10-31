@@ -16,8 +16,8 @@ const App = () => {
     setUsername('taro');
   };
   const [todos, setTodos] = useState([
-    { content: '掃除', id: shortid.generate() },
-    { content: '洗濯', id: shortid.generate() },
+    { content: '掃除', id: shortid.generate(), isDone: false },
+    { content: '洗濯', id: shortid.generate(), isDone: false },
   ]);
   console.log(todos);
   const addTodo = (text) => {
@@ -26,6 +26,21 @@ const App = () => {
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+  };
+  // isDoneを変更する関数
+  const handleIsDoneChange = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (id === todo.id) {
+          return {
+            ...todo,
+            isDone: !todo.isDone,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
   };
 
   /* stateを使わないコード
@@ -38,7 +53,11 @@ const App = () => {
   return (
     <React.Fragment>
       <Title name={username} />
-      <List deleteTodo={deleteTodo} todos={todos} />
+      <List
+        deleteTodo={deleteTodo}
+        todos={todos}
+        handleIsDoneChange={handleIsDoneChange}
+      />
       <Form addTodo={addTodo} />
       <button onClick={changeName}>名前が変わるボタン</button>
     </React.Fragment>

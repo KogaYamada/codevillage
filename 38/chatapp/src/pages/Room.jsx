@@ -25,11 +25,17 @@ const Room = () => {
   // メッセージを追加
   const handleSubmit = (e) => {
     e.preventDefault();
-    db.collection('messages').add({
-      content: text,
-      user: user.displayName,
-      createdAt: new Date(),
-    });
+    if (text.length === 0) {
+      alert('文字を入力してください');
+      return;
+    }
+    db.collection('messages')
+      .add({
+        content: text,
+        user: user.displayName,
+        createdAt: new Date(),
+      })
+      .then(() => setText(''));
     /*
 	firebase.firestore().collection("messages").add({})
 	*/
@@ -39,12 +45,14 @@ const Room = () => {
   useEffect(() => {
     // onSnapshot
     // firestoreのmessagesコレクションのデータに更新があった時に実行される
-    db.collection('messages').onSnapshot((querySnapshot) => {
-      const messages = querySnapshot.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
+    db.collection('messages')
+      .orderBy('createdAt')
+      .onSnapshot((querySnapshot) => {
+        const messages = querySnapshot.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        });
+        setMessages(messages);
       });
-      setMessages(messages);
-    });
     // db.collection('messages')
     //   .get()
     //   .then((querySnapshot) => {

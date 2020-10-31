@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 
-const List = ({ todos, deleteTodo }) => {
+const List = ({ todos, deleteTodo, handleIsDoneChange }) => {
   return (
     <ul>
       {todos.map((todo) => {
@@ -11,6 +11,8 @@ const List = ({ todos, deleteTodo }) => {
             id={todo.id}
             deleteTodo={deleteTodo}
             content={todo.content}
+            handleIsDoneChange={handleIsDoneChange}
+            isDone={todo.isDone}
           />
         );
       })}
