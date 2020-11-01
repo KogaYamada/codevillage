@@ -1,13 +1,14 @@
 import React from 'react';
 
-const List = () => {
+const List = ({ todos }) => {
+  // リストされているものには「一意なkey(ユニークなキー)」が必要
   return (
     <React.Fragment>
       <h2>やることリスト</h2>
       <ul>
-        <li>掃除</li>
-        <li>洗濯</li>
-        <li>うんどう</li>
+        {todos.map((todo, index) => {
+          return <li key={index}>{todo.content}</li>;
+        })}
       </ul>
     </React.Fragment>
   );

@@ -24,3 +24,15 @@ Reactの起動方法
 
 
 
+TODOアプリ制作
+ - todoリストの表示
+ - todoリストに値を追加する
+ - 完了したtodoの削除
+
+ nanoid
+  1. nanoidのnpmページに行く
+  2. installのコマンドをコピー
+  3. コピーしたコマンドをターミナルに貼り付けて実行(Reactは終了させておく Ctrl + c)
+
+  次回11月8日
+   - idをそれぞれのtodoに振り分けてkeyとsて使用する
