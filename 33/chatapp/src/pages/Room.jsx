@@ -2,24 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthService';
 import { auth, db } from '../firebase';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, Button, TextField, Typography } from '@material-ui/core';
-
-const useStyles = makeStyles({
-  message: {
-    padding: '15px',
-    margin: '15px',
-  },
-});
+import List from '../components/List';
+import Form from '../components/Form';
 
 const Room = () => {
   const [messages, setMessages] = useState([]);
-  const [text, setText] = useState('');
-  const classes = useStyles();
   const user = useContext(AuthContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const addMessage = (text) => {
     db.collection('messages').add({
       content: text,
       username: user.displayName,
@@ -31,11 +21,13 @@ const Room = () => {
   //  - 第二引数の依存配列の中の変数が変わるたびにコールバック関数を実行する
   //  - 画面が読み込まれた(描写された)あとの最初の一回実行される
   useEffect(() => {
-    db.collection('messages').onSnapshot((querySnapshot) => {
-      const data = querySnapshot.docs.map((doc) => doc.data());
-      console.log(data);
-      setMessages(data);
-    });
+    db.collection('messages')
+      .orderBy('createdAt')
+      .onSnapshot((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        console.log(data);
+        setMessages(data);
+      });
 
     // db.collection('messages')
     //   .get()
@@ -46,29 +38,14 @@ const Room = () => {
     //     setMessages(data);
     //   });
   }, []);
+  // aタグはデフォルトの機能としてhref属性に指定されたurlに遷移する
+  // form => action属性に指定されたURLに遷移 + データ送信
+  // => そのデフォルトの機能をキャンセルする
 
   return (
     <div>
-      {messages.map((message) => {
-        return (
-          <Card className={classes.message}>
-            <Typography>投稿者({message.username})</Typography>
-            <Typography>{message.content}</Typography>
-          </Card>
-        );
-      })}
-      <form onSubmit={handleSubmit}>
-        <TextField
-          variant='outlined'
-          size='small'
-          placeholder='メッセージを入力'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <Button type='submit' variant='contained' color='secondary'>
-          送信
-        </Button>
-      </form>
+      <List messages={messages} />
+      <Form addMessage={addMessage} />
       <button onClick={() => auth.signOut()}>logout</button>
     </div>
   );
