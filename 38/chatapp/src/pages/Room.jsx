@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 const Room = () => {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState('');
-  const user = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const classes = useStyles();
 
   const signOut = () => {
