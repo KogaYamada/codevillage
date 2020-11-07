@@ -2,7 +2,7 @@ import React from 'react';
 
 import Item from './Item';
 
-const List = ({ todos, deleteTodo }) => {
+const List = ({ todos, deleteTodo, handleIsDoneChange }) => {
   return (
     <React.Fragment>
       <p>やることリスト</p>
@@ -10,6 +10,8 @@ const List = ({ todos, deleteTodo }) => {
         {todos.map((todo) => {
           return (
             <Item
+              handleChange={handleIsDoneChange}
+              isDone={todo.isDone}
               deleteTodo={deleteTodo}
               key={todo.id}
               id={todo.id}

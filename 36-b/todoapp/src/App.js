@@ -16,15 +16,32 @@ const App = () => {
     setUsername('じろう');
   };
   const [todos, setTodos] = useState([
-    { content: '掃除', id: shortid.generate() },
-    { content: '洗濯', id: shortid.generate() },
-    { content: '運動', id: shortid.generate() },
+    { content: '掃除', id: shortid.generate(), isDone: false },
+    { content: '洗濯', id: shortid.generate(), isDone: false },
+    { content: '運動', id: shortid.generate(), isDone: false },
   ]);
-  console.log(todos);
 
   const addTodo = (text) => {
     // スプレッド構文
-    setTodos([...todos, { content: text, id: shortid.generate() }]);
+    setTodos([
+      ...todos,
+      { content: text, id: shortid.generate(), isDone: false },
+    ]);
+  };
+
+  const handleIsDoneChange = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (id === todo.isDone) {
+          return {
+            ...todo,
+            isDone: !todo.isDone,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
   };
 
   const deleteTodo = (id) => {
@@ -34,7 +51,11 @@ const App = () => {
   return (
     <>
       <Title name={username} />
-      <List deleteTodo={deleteTodo} todos={todos} />
+      <List
+        deleteTodo={deleteTodo}
+        todos={todos}
+        handleIsDoneChange={handleIsDoneChange}
+      />
       <Form addTodo={addTodo} />
       <button onClick={changeName}>名前が変わるボタン</button>
     </>

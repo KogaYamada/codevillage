@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 
-const Item = ({ content, deleteTodo, id }) => {
-  const [isDone, setIsDone] = useState(false);
+const Item = ({ content, deleteTodo, id, handleChange, isDone }) => {
   const handleDeleteClick = () => {
     deleteTodo(id);
-  };
-  const handleChange = () => {
-    setIsDone(!isDone);
   };
   // 三項演算子
   // 条件式 ?  trueの時 : falseの時
 
   return (
     <li>
-      <input onChange={handleChange} type="checkbox" />
+      <input onChange={() => handleChange(id)} type='checkbox' />
       <span style={{ textDecoration: isDone ? 'line-through' : 'none' }}>
         {content}
       </span>

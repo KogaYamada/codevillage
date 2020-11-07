@@ -23,6 +23,10 @@ const Room = () => {
   // firestoreにメッセージの内容を追加
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (text.length === 0) {
+      alert('文字を入力して下さい');
+      return;
+    }
     db.collection('messages')
       .add({
         content: text,
@@ -31,6 +35,7 @@ const Room = () => {
       })
       .then(() => {
         console.log('追加成功');
+        setText('');
       })
       .catch((error) => {
         console.error('追加失敗', error);
@@ -39,13 +44,15 @@ const Room = () => {
 
   // 最初の1回実行
   useEffect(() => {
-    db.collection('messages').onSnapshot((querySnapshot) => {
-      // firestoreのmessagesコレクションの値が更新された時
-      const messages = querySnapshot.docs.map((doc) => {
-        return doc.data();
+    db.collection('messages')
+      .orderBy('createdAt')
+      .onSnapshot((querySnapshot) => {
+        // firestoreのmessagesコレクションの値が更新された時
+        const messages = querySnapshot.docs.map((doc) => {
+          return doc.data();
+        });
+        setMessages(messages);
       });
-      setMessages(messages);
-    });
   }, []);
 
   const logout = () => {

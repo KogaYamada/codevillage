@@ -1,0 +1,13 @@
+mkdir react-node 
+
+cd react-node
+
+mkdir server
+
+npx create-react-app client
+
+cd server
+
+npm init -y   -> package.jsonを生成
+
+npm i express nodemon cors
