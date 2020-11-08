@@ -17,20 +17,24 @@ const App = () => {
   const [todos, setTodos] = useState([
     {
       content: '掃除をする',
+      id: nanoid(),
     },
     {
       content: '洗濯をする',
+      id: nanoid(),
     },
     {
       content: '料理をする',
-    },
-    {
-      content: '運動をする',
-    },
-    {
-      content: '運動をする',
+      id: nanoid(),
     },
   ]);
+
+  // todosに新しい要素を追加する関数
+  const addTodo = (text) => {
+    // スプレッド構文
+    setTodos([...todos, { content: text, id: nanoid() }]);
+  };
+  // addTodo("こんちは")
 
   /* stateを使わない書き方
   let name = 'こうが';
@@ -44,7 +48,7 @@ const App = () => {
     <React.Fragment>
       <Title user={name} />
       <List todos={todos} />
-      <Form />
+      <Form addTodo={addTodo} />
       <button onClick={changeName}>名前変更ボタン</button>
     </React.Fragment>
   );
