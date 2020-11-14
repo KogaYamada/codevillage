@@ -1,39 +1,18 @@
-const planeMaterial = [
-  { name: 'kona', ryou: 123 },
-  { name: 'kome', ryou: 12345 },
-];
-const kuroMaterial = [
-  { name: 'kona', ryou: 123 },
-  { name: 'kome', ryou: 12345 },
-];
-
-const material = {
-  plane: [
-    { name: 'kona', ryou: 123 },
-    { name: 'kome', ryou: 12345 },
-  ],
-  kuro: [
-    { name: 'kona', ryou: 123 },
-    { name: 'kome', ryou: 12345 },
-  ],
+const tags = {
+  1: 'Javascript',
+  2: 'PHP',
+  3: 'CSS',
+  4: 'HTML',
+  5: 'Ruby',
+  6: 'Java',
+  8: 'Laravel',
 };
-const container = document.getElementById('container');
-const selector = document.getElementById('selector');
-const kind = 'kuro';
 
-selector.addEventListener('change', (event) => {
-  kind = event.target.value;
-  kuroMaterial.forEach((material) => {
-    const tr = document.createElement('tr');
-    const tdMaterial = document.createElement('td');
-    const tdAmount = document.createElement('td');
-
-    tdMaterial.textContent = material.name;
-    tdAmount.textContent = material.ryou;
-
-    tr.appendChild(tdMaterial);
-    tr.appendChild(tdAmount);
-
-    container.appendChild(tr);
-  });
+// if (tagId == !null) {
+Object.keys(tags).forEach(function (key) {
+  if (key == tagId) {
+    console.log(tags[key]);
+    // document.getElementById('tags').value = tags[key];
+  }
 });
+// }

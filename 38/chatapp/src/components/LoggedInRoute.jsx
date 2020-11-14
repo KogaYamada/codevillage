@@ -4,9 +4,10 @@ import { AuthContext } from './AuthService';
 
 const LoggedInRoute = ({ component: Component, ...otherProps }) => {
   const { user, loading } = useContext(AuthContext);
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+  // if (loading) {
+  //   return <h1>Loading...</h1>;
+  // }
+
   return (
     <Route
       {...otherProps}
