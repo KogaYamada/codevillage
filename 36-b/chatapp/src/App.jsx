@@ -1,24 +1,24 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import {AuthProvider} from "./context/AuthService"
+import { AuthProvider } from './context/AuthService';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Room from './pages/Room';
-import LoggedInRoute from "./components/LoggedInRoute"
+import LoggedInRoute from './components/LoggedInRoute';
 
 // ユーザーがログインしていればroomにはアクセスできる <=> ログインしていなければroomにはアクセスできない
 
 const App = () => {
   return (
     <BrowserRouter>
-			<AuthProvider>
-				<Switch>
-					<LoggedInRoute exact path="/" component={Room} />
-					<Route exact path="/login" component={Login} />
-					<Route exact path="/signup" component={Signup} />
-				</Switch>
-			</AuthProvider>
+      <AuthProvider>
+        <Switch>
+          <LoggedInRoute exact path='/' component={Room} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
+        </Switch>
+      </AuthProvider>
     </BrowserRouter>
   );
 };
