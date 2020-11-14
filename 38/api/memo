@@ -1,0 +1,12 @@
+
+mkdir api
+
+cd api
+
+npx crete-react-app client
+
+cd client
+
+srcの中を全部消す
+
+index.jsを作って中身を書く
