@@ -34,7 +34,18 @@ const App = () => {
     // スプレッド構文
     setTodos([...todos, { content: text, id: nanoid() }]);
   };
-  // addTodo("こんちは")
+
+  // todoを削除する関数
+  const deleteTodo = (id) => {
+    // 引数に取ったidと一致するidを持つtodoを除いた配列を作成
+    const deletedTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+
+    setTodos(deletedTodos); // 削除されたtodosをtodosにセット
+
+    // setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
   /* stateを使わない書き方
   let name = 'こうが';
@@ -47,7 +58,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Title user={name} />
-      <List todos={todos} />
+      <List deleteTodo={deleteTodo} todos={todos} />
       <Form addTodo={addTodo} />
       <button onClick={changeName}>名前変更ボタン</button>
     </React.Fragment>
