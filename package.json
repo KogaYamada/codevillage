@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "shortid": "^2.2.15"
-  }
-}
