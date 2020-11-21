@@ -1,0 +1,9 @@
+npm init // packege.jsonを生成
+
+npm i typescript // typescriptのインストール
+
+-----
+babel, webpack, typescript, linter, prettier
+-----
+
+npx tsc --init
