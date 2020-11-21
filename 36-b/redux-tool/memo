@@ -1,0 +1,55 @@
+npx create-react-app <アプリ名>
+
+cd <アプリ名>
+
+srcの中を消す
+
+srcの中にindex.jsx App.jsxを作成
+
+それぞれのファイルに雛形を書く
+
+react起動
+
+
+npm i @reduxjs/toolkit react-redux
+or
+yarn add @reduxjs/toolkit react-redux
+
+package.jsonに"@reduxjs/toolkit"と"react-redux"
+が追加されている
+
+
+各コンポーネント作成
+
+
+
+src/storesフォルダを作成
+
+stores/index.jsを作成
+
+npm i redux
+or
+yarn add redux
+
+stores/index.jsの中身を書く
+
+src/index.jsxの中を書く
+
+
+
+stores/todos.jsを作成して中身を書く
+
+
+
+stores/index.jsを書き換える
+
+List.jsxでtodosを取得
+
+console.logで確認
+
+---------------------
+ここから
+
+npm i nanoid
+or 
+yarn add nanoid
