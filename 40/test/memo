@@ -1,0 +1,53 @@
+- testフォルダを作成
+
+- testフォルダに移動
+
+- npm init -y  //package.jsonの生成
+
+- npm i jest
+
+- package.jsonにjestがあることを確認
+
+----------------
+ここから
+
+- script.jsを作成
+
+- add2関数を作成
+
+- add2関数をexport
+
+- script.test.jsを作成
+
+- add2をインポート
+
+----
+npm パッケージマネージャとしてのコマンド
+ -> ライブラリのインストールやアンインストールなどの操作
+
+npx ライブラリ自体に登録されているコマンドの実行
+ - jestコマンドの実行
+ - create-react-appコマンドの実行
+
+npx cowsay おはよう
+
+----------
+testツール
+
+- jest
+
+- enzyme, react testing library
+
+-----------
+
+- typescript
+- サーバーとの通信
+- redux
+
+----------
+
+babel      JavaScriptのコードのトランスパイル
+webpack    JavaScriptのコードをいい感じにまとめるもの,ファイル同士の依存関係を解決
+typescript 型のエラー出してくれる、型を使用した開発ができる
+linter     開発時のコードのルールを作成できる
+pritter    コードを綺麗にてくれる
