@@ -20,9 +20,17 @@
 
 - react を起動
 
---------------------------
-ここから
-
 - src/pagesフォルダ作成
 
 - pagesの中にSignup.jsx, Login.jsx, Room.jsxを作成
+
+-----------------
+ここから
+
+npm install react-router-dom
+or
+yarn add react-router-dom
+
+npm install firebase
+or
+yarn add firebase

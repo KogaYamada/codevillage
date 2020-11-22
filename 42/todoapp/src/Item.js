@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
-const Item = ({ todo, deleteTodo }) => {
-  const [isDone, setIsDone] = useState(false);
-
+const Item = ({ todo, deleteTodo, changeIsDone }) => {
   return (
     <li>
-      <input type='checkbox' onChange={() => setIsDone(!isDone)} />
-      <span style={{ textDecoration: isDone ? 'line-through' : 'none' }}>
+      <input type='checkbox' onChange={() => changeIsDone(todo.id)} />
+      <span style={{ textDecoration: todo.isDone ? 'line-through' : 'none' }}>
         {todo.content}
       </span>
       <button

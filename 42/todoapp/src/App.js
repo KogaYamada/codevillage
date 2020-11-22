@@ -18,21 +18,39 @@ const App = () => {
     {
       content: '掃除をする',
       id: nanoid(),
+      isDone: false,
     },
     {
       content: '洗濯をする',
       id: nanoid(),
+      isDone: false,
     },
     {
       content: '料理をする',
       id: nanoid(),
+      isDone: false,
     },
   ]);
+
+  const changeIsDone = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            isDone: !todo.isDone,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
 
   // todosに新しい要素を追加する関数
   const addTodo = (text) => {
     // スプレッド構文
-    setTodos([...todos, { content: text, id: nanoid() }]);
+    setTodos([...todos, { content: text, id: nanoid(), isDone: false }]);
   };
 
   // todoを削除する関数
@@ -58,7 +76,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Title user={name} />
-      <List deleteTodo={deleteTodo} todos={todos} />
+      <List deleteTodo={deleteTodo} todos={todos} changeIsDone={changeIsDone} />
       <Form addTodo={addTodo} />
       <button onClick={changeName}>名前変更ボタン</button>
     </React.Fragment>
