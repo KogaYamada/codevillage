@@ -1,0 +1,9 @@
+- tsフォルダの作成
+
+- cd ts
+
+- npm init -y // package.jsonの作成
+
+- npm i typescript
+
+- npx tsc --init // typescriptの設定ファイルの作成

@@ -47,9 +47,13 @@ List.jsxでtodosを取得
 
 console.logで確認
 
----------------------
-ここから
-
 npm i nanoid
 or 
 yarn add nanoid
+
+
+---------------------
+ここから
+
+- isDoneによってtext-decorationがline-through or noneを判定する
+- チェックボックスのチェックが変わったときisDoneをトグルする

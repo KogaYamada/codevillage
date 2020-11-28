@@ -11,7 +11,7 @@ const INITAL_STATE = [
   {
     content: '洗濯をする',
     id: nanoid(),
-    isDone: false,
+    isDone: true,
   },
   {
     content: '料理をする',
@@ -32,9 +32,20 @@ const slice = createSlice({
       ];
     },
     deleteTodo: (state, action) => {
-      // const filterdTodos = state.filter(() => {})
-      // return filterdTodos
-      return state.filter(() => {}); // 課題
+      // action.payloadに欲しいもの -> 削除ボタンを押した要素のid
+      const test = (todo) => todo.id !== action.payload;
+
+      return state.filter(test); // 課題
+    },
+    toggleIsDone: (state, action) => {
+      // action.payloadはidとして扱う
+      return state.map((todo) => {
+        if (todo.id === action.payload) {
+          return { ...todo, isDone: !todo.isDone };
+        } else {
+          return todo;
+        }
+      });
     },
   },
 });
@@ -42,4 +53,4 @@ const slice = createSlice({
 // reducerをエクスポート
 export default slice.reducer;
 
-export const { addTodo, deleteTodo } = slice.actions;
+export const { addTodo, deleteTodo, toggleIsDone } = slice.actions;

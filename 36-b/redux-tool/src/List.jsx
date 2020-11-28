@@ -1,24 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteTodo } from './stores/todos';
+import { useSelector } from 'react-redux';
+
+import Item from './Item';
 const List = () => {
   const todos = useSelector((state) => state.todos);
-  const dispach = useDispatch();
 
-  // todoを削除する関数
-  const handleDelete = (id) => {
-    dispach(); // 課題
-  };
   return (
     <ul>
       {todos.map((todo) => {
-        return (
-          <li key={todo.id}>
-            {todo.content}
-            <button onClick={handleDelete}>削除</button>
-          </li>
-        );
+        return <Item key={todo.id} todo={todo} />;
       })}
     </ul>
   );
 };
 export default List;
+
+// 10ふんまで休憩
