@@ -1,0 +1,14 @@
+- いつもの勉強用フォルダに移動
+
+- mkdir ts
+
+- cd ts
+
+- npm init -y // package.jsonの作成
+
+// npmの人
+- npm i typescript
+// yarnの人
+- yarn add typescript
+
+- npx tsc --init // tsconfig.jsonの作成

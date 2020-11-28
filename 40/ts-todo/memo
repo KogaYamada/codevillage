@@ -1,0 +1,13 @@
+npx create-react-app ts-todo --template typescript
+
+# or
+
+yarn create react-app ts-todo --template typescript
+
+- cd ts-todo
+
+- src/を削除
+
+- src/index.tsxを作成
+
+- tsconfig.jsonの "jsx": "react-jsx"を "jsx": "react"に変更
