@@ -1,0 +1,23 @@
+- npx create-react-app redux-tool
+
+- cd redux-tool
+
+- src/全て削除
+
+- src/index.jsxを作成 + 中身書く
+
+npmの人
+- npm i @reduxjs/toolkit redux react-redux
+yarnの人
+- yarn add @reduxjs/toolkit redux react-redux
+
+-------ここから
+
+npmの人
+- npm i nanoid
+yarnの人
+- yarn add nanoid
+
+- App.jsx, Form.jsx, List.jsx, Item.jsx
+
+// 8分まで休憩!
