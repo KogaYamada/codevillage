@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { auth } from '../config/firebase';
+
 const useStyles = makeStyles({
   title: {
     color: 'red',
@@ -21,13 +23,39 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const classes = useStyles();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        // ログインが成功した時の処理
+        console.log('ログイン成功', result);
+      })
+      .catch((error) => {
+        // ログインが失敗した時の処理
+        console.log('ログイン失敗', error);
+      });
+  };
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={handleSubmit}>
       <h1 className={classes.title}>ログインページ</h1>
-      <TextField variant='filled' label='メールアドレス' />
-      <TextField variant='outlined' label='パスワード' />
+      <TextField
+        variant='filled'
+        label='メールアドレス'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <TextField
+        type='password'
+        variant='outlined'
+        label='パスワード'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <Link to='/signup'>アカウントを持ちでない方</Link>
-      <Button variant='contained' color='secondary'>
+      <Button type='submit' variant='contained' color='secondary'>
         ログイン
       </Button>
     </form>
