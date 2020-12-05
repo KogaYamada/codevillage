@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import shortid from 'shortid';
+import shortid from 'shortid'; // ライブラリの型定義ファイルが必要
 
 // 自分で作ったファイルは相対パスでインポート
 import Title from './Title';
@@ -9,19 +9,21 @@ import Form from './Form';
 // props: 親コンポーネントから子コンポーネントに値を渡す
 // state: Reactの画面を更新するのに必要な変数 === stateを変更すれば画面が再描写される
 
+type Todo = {
+  content: string;
+  id: string;
+  isDone: boolean;
+};
+
 const App = () => {
   const [username, setUsername] = useState('太郎');
   // const [stateの値, stateを更新する関数] = useState(初期値);
   const changeName = () => {
     setUsername('じろう');
   };
-  const [todos, setTodos] = useState([
-    { content: '掃除', id: shortid.generate(), isDone: false },
-    { content: '洗濯', id: shortid.generate(), isDone: false },
-    { content: '運動', id: shortid.generate(), isDone: false },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  const addTodo = (text) => {
+  const addTodo = (text: string) => {
     // スプレッド構文
     setTodos([
       ...todos,
@@ -29,10 +31,10 @@ const App = () => {
     ]);
   };
 
-  const handleIsDoneChange = (id) => {
+  const handleIsDoneChange = (id: string) => {
     setTodos(
       todos.map((todo) => {
-        if (id === todo.isDone) {
+        if (id === todo.id) {
           return {
             ...todo,
             isDone: !todo.isDone,
@@ -44,7 +46,7 @@ const App = () => {
     );
   };
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 

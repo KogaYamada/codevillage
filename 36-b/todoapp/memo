@@ -1,0 +1,9 @@
+- todoapp開く
+
+- cd todoapp (todoappフォルダに移動)
+
+- index.js -> index.tsxに変更
+
+- npm i typescript    or     yarn add typescript
+
+- npm start
