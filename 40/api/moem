@@ -1,0 +1,13 @@
+- apiプロジェクト作成
+
+- srcの中身全消し
+
+- srcの中にindex.tsx作成 + 中身書く
+
+- axiosのインストール
+    yarn
+        yarn add axios
+    npm
+        npm i axios
+
+- react スタート
