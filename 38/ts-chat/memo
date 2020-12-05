@@ -1,0 +1,17 @@
+- ts-todoのnode_modulesを削除
+
+- ts-todoをコピー
+
+- いつも勉強に使っているフォルダ内に貼り付け
+
+- フォルダ名をts-chatに変更
+
+- srcの中身を全て削除
+
+- srcの中にindex.tsxを作成 + 中身書く
+
+- npm i
+or
+- yarn
+
+reactスタート

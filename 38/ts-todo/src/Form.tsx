@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 
 type Props = {
-  addTodo?: (text: string) => void;
+  addTodo: (text: string) => void;
 };
 
 const Form: FC<Props> = ({ addTodo }) => {
@@ -9,7 +9,12 @@ const Form: FC<Props> = ({ addTodo }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addTodo?.(text); // optional chaining
+    if (text.trim().length === 0) {
+      alert('文字を入力してください');
+      return;
+    }
+    addTodo(text);
+    setText('');
   };
   return (
     <form onSubmit={handleSubmit}>
