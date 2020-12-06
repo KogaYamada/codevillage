@@ -24,9 +24,6 @@
 
 - pagesの中にSignup.jsx, Login.jsx, Room.jsxを作成
 
------------------
-ここから
-
 npm install react-router-dom
 or
 yarn add react-router-dom
@@ -34,3 +31,17 @@ yarn add react-router-dom
 npm install firebase
 or
 yarn add firebase
+
+
+
+
+- srcの中にcontextフォルダを作成
+
+- contextフォルダの中にAuthContext.jsxを作成
+
+-----------------
+ここから
+
+- srcの中にcomponentsフォルダを作成
+
+- componentsフォルダの中にLoggedInRoute.jsxを作成

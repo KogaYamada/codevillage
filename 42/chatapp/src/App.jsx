@@ -3,15 +3,20 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Room from './pages/Room';
 
+import AuthProvider from './context/AuthContext';
+import LoggedInRoute from './components/LoggedInRoute';
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={Room} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/signup' component={Signup} />
-      </Switch>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Switch>
+          <LoggedInRoute exact path='/' component={Room} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 
