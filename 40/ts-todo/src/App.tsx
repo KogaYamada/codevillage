@@ -5,6 +5,8 @@ import Form from './Form';
 
 import { Todo } from './types';
 
+type Add2 = (n: number) => string;
+
 const App: FC = () => {
   const [todos, setTodos] = useState<Todo[]>([
     { content: '掃除をする', id: nanoid(), isDone: false },
