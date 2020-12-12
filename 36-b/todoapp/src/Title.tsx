@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Title = ({ name }) => {
+type Props = {
+  name: string;
+};
+
+const Title: FC<Props> = ({ name }) => {
   return (
     <div>
       <h1>Todo App</h1>

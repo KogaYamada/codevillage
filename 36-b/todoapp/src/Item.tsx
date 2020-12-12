@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 
-const Item = ({ content, deleteTodo, id, handleChange, isDone }) => {
+type Props = {
+  content: string;
+  deleteTodo: (id: string) => void;
+  id: string;
+  handleChange: (id: string) => void;
+  isDone: boolean;
+};
+
+const Item: FC<Props> = ({ content, deleteTodo, id, handleChange, isDone }) => {
   const handleDeleteClick = () => {
     deleteTodo(id);
   };

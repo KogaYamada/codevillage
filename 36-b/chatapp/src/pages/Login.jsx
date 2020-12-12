@@ -32,11 +32,11 @@ const Login = () => {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        history.push('/');
+      .then((result) => {
+        console.log(result);
       })
       .catch((error) => {
-        console.error('ログイン失敗', error);
+        console.log('ログイン失敗', error);
       });
   };
 

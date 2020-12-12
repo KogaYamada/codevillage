@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Item from './Item';
+import { Todo } from './App';
 
-const List = ({ todos, deleteTodo, handleIsDoneChange }) => {
+type Props = {
+  todos: Todo[];
+  deleteTodo: (id: string) => void;
+  handleIsDoneChange: (id: string) => void;
+};
+
+const List: FC<Props> = ({ todos, deleteTodo, handleIsDoneChange }) => {
   return (
     <React.Fragment>
       <p>やることリスト</p>

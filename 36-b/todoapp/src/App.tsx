@@ -9,7 +9,7 @@ import Form from './Form';
 // props: 親コンポーネントから子コンポーネントに値を渡す
 // state: Reactの画面を更新するのに必要な変数 === stateを変更すれば画面が再描写される
 
-type Todo = {
+export type Todo = {
   content: string;
   id: string;
   isDone: boolean;
