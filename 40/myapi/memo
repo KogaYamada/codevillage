@@ -1,0 +1,37 @@
+-- 自作バックエンドと通信してみよう
+
+- cd ..で以前の作業フォルダから抜ける
+
+- mkdir myapi && cd myapi　で「myapi」フォルダを作成してそこに移動
+
+- mkdir server && cd server でserverフォルダを作成して移動
+
+- npm init -y でpackage.jsonの作成
+
+- nodemon express cors のインストール
+    - yarnの場合  yarn add nodemon express cors
+    - npmの場合   npm i nodemon express cors
+
+
+- cd .. でmyapiに移動
+
+- npx create-react-app client --template typescript
+ でreactのアプリ作成
+
+- cd client　で作成したアプリに移動
+
+- src/の中身削除 & index.tsx作成
+
+- index.tsxの中身書く
+
+----------------------------
+
+- cd ../server でserverフォルダに移動
+
+- touch server.js でserver.jsファイルの作成
+
+- server.jsの中身を書く
+
+- package.jsonの書き換え
+
+- npm start
