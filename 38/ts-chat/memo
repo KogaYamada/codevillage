@@ -15,3 +15,23 @@ or
 - yarn
 
 reactスタート
+
+------------------------------
+
+npm install @material-ui/core
+yarn add @material-ui/core
+
+
+npm i firebase
+yarn add firebase
+
+- src/config/firebase.tsを作成して
+その中に以前作成したチャットアプリのfirebase.js
+の中身をコピペする。
+
+
+
+npm i react-router-dom
+yarn add react-router-dom
+
+npm i --save-dev @types/react-router-dom
