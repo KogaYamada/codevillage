@@ -6,6 +6,7 @@ export const AuthContext = createContext(null);
 // Reactのコンポーネント
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  // const [isLoading, setLoading] = useState(true);
 
   // タイミングを調整するための関数
   // 第一引数: 調整されタイミングで実行されるcallback関数
