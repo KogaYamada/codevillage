@@ -1,0 +1,9 @@
+redux-toolのプロジェクト作成
+
+- srcの中身削除
+
+- index.jsx作成 + 中身書く
+
+- npm install @reduxjs/toolkit redux react-redux
+or
+- yarn add @reduxjs/toolkit redux react-redux

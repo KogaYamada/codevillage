@@ -24,8 +24,6 @@
 
 - index.tsxの中身書く
 
-----------------------------
-
 - cd ../server でserverフォルダに移動
 
 - touch server.js でserver.jsファイルの作成
@@ -35,3 +33,10 @@
 - package.jsonの書き換え
 
 - npm start
+
+----------------------------
+- axiosをインストール
+
+npm i axios
+or
+yarn add axios

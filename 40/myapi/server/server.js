@@ -1,6 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 // エンドポイント "/"にGETリクエストされた時 "helloworld!!"を返す
 app.get('/', (req, res) => {
@@ -8,7 +10,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/user', (req, res) => {
-  res.status(200).json({ username: 'koga', age: 10 });
+  if (req.headers.apikey === 'abc') {
+    res.status(200).json({ username: 'koga', age: 10 });
+  } else {
+    res
+      .status(401)
+      .json({ errorCode: 401, message: 'API keyが間違っています' });
+  }
 });
 
 app.listen(8000, () => {
