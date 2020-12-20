@@ -16,34 +16,77 @@ const useStyles = makeStyles({
 });
 
 const Room = () => {
+  const user = useContext(AuthContext);
   const classes = useStyles();
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
-  console.log(text);
+
   const logout = () => {
     auth.signOut();
   };
 
-  useEffect(() => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     db.collection('messages')
-      .get()
-      .then((querySnapshot) => {
+      .add({
+        content: text,
+        createdAt: new Date(),
+        username: user.displayName,
+      })
+      .then(() => {
+        console.log('登録成功');
+      })
+      .catch(() => {
+        console.log('登録失敗');
+      });
+  };
+  // 並び
+  // asc  昇順 default
+  // desc 降順
+
+  useEffect(() => {
+    // リアルタイムでdbの値を取得する場合
+    // dbの更新を監視して更新があれば再取得する
+    const unsubscribe = db
+      .collection('messages')
+      .orderBy('createdAt', 'desc')
+      .onSnapshot((querySnapshot) => {
         setMessages(
           querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
       });
+
+    // コンポーネントが画面からunmountされた(消えた)時に実行される関数
+    // componentWillUnmount()に相当
+    return () => {
+      // onSnapshot関数の監視を止める関数
+      unsubscribe();
+    };
+    // 1回だけ取得する場合
+    // db.collection('messages')
+    //   .get()
+    //   .then((querySnapshot) => {
+    //     setMessages(
+    //       querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    //     );
+    //   });
   }, []);
+
+  const messagesRef = db.collection('messages'); // collection reference
+  const messageRef = db.collection('messages').doc('kAG3cRDKEwPMtKaXaFNJ');
 
   return (
     <div className={classes.root}>
       <h1>チャットルーム</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextField
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder='チャットを入力'
         />
-        <Button variant='contained'>送信</Button>
+        <Button type='submit' variant='contained'>
+          送信
+        </Button>
       </form>
 
       {messages.map((message) => {
