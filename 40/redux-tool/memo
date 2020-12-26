@@ -7,3 +7,20 @@ redux-toolのプロジェクト作成
 - npm install @reduxjs/toolkit redux react-redux
 or
 - yarn add @reduxjs/toolkit redux react-redux
+
+--------------------------------------
+12/26
+
+- react起動確認
+
+- App.jsx作成
+
+- Counter.jsx作成
+
+-----
+
+- storesフォルダを作成
+
+- index.jsを作成して中身を書く
+
+- index.jsxにProviderを追加
