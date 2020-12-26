@@ -14,29 +14,31 @@ type UserState =
 
 // nullならログイン状態ではない、nullでなかったらログイン状態である
 export const AuthContext = createContext<UserState>({
-  isLogin: false,
-  isLoading: true,
+  isLogin: true,
+  name: 'koga',
+  isLoading: false,
 });
 
 const AuthPrvider: FC = ({ children }) => {
   const [user, setUser] = useState<UserState>({
-    isLogin: false,
-    isLoading: true,
+    isLogin: true,
+    name: 'koga',
+    isLoading: false,
   });
 
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        setUser({
-          isLogin: true,
-          name: authUser.displayName,
-          isLoading: false,
-        });
-      } else {
-        setUser({ isLogin: false, isLoading: false });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       setUser({
+  //         isLogin: true,
+  //         name: authUser.displayName,
+  //         isLoading: false,
+  //       });
+  //     } else {
+  //       setUser({ isLogin: false, isLoading: false });
+  //     }
+  //   });
+  // }, []);
 
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };

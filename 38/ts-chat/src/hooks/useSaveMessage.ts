@@ -7,13 +7,14 @@ const useSaveMessage = () => {
 
   const saveMessage = (text: string) => {
     if (userState.isLogin) {
-      db.collection('messages').add({
+      return db.collection('messages').add({
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         user: userState.name,
         content: text,
       });
     } else {
       alert('ログインしてください');
+      return Promise.reject('user not login');
     }
   };
 

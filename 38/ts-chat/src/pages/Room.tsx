@@ -1,26 +1,26 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import React, { useState } from 'react';
 import { auth } from '../config/firebase';
+import { useForm } from 'react-hook-form';
 
 import useFetchMessage from '../hooks/useFetchMessage';
 import useSaveMessage from '../hooks/useSaveMessage';
-import useInput from '../hooks/useInput';
 
 const Room = () => {
-  const text = useInput('');
+  const { register, handleSubmit, reset } = useForm();
   const { messages } = useFetchMessage();
   const { saveMessage } = useSaveMessage();
   const signout = () => auth.signOut();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    saveMessage(text.value);
+  console.log('描写');
+  const onSubmit = (values: { text: string }) => {
+    console.log(values);
+    saveMessage('asfd');
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input {...text} />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input name='text1' ref={register} />
+        <input name='text2' ref={register} />
         <button type='submit'>送信</button>
       </form>
       <ul>
