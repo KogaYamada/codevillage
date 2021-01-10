@@ -1,0 +1,13 @@
+- npx create-react-app todo-redux --template typescript
+
+- srcの中身削除
+
+- index.tsx
+
+- App.tsx Form.tsx List.tsx Item.tsx
+--------------
+
+npx typesync
+
+yarn
+npm i

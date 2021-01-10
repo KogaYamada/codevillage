@@ -28,6 +28,7 @@ const slice = createSlice({
     },
     // 書いておく
     changeImageUrl: (state, action) => {
+      console.log('asd');
       return {
         ...state,
         imageUrl: action.payload,
@@ -43,6 +44,7 @@ const { changeImageUrl } = slice.actions;
 export const fetchImage = () => {
   return async (dispatch) => {
     try {
+      console.log(123);
       const response = await fetch('https://dog.ceo/api/breeds/image/random');
       const data = await response.json();
       dispatch(changeImageUrl(data.message));
