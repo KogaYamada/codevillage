@@ -113,7 +113,7 @@ userData.age = 21;
 
 */
 // const colors = ['red', 'blue', 'yellow'];
-//                0       1        2
+//       　　         0       1        2
 // console.log(colors);
 // 値の取得方法,更新方法
 // colors[1] = 'white';
