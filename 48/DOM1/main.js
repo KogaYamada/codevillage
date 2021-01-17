@@ -17,9 +17,16 @@ newItem.textContent = 'もも';
 list.appendChild(newItem);
 
 const button = document.getElementById('button');
-button.addEventListener('click', () => {
+button.addEventListener('click', (event) => {
   const result = confirm('削除してよろしいですか？');
   console.log(result);
 });
 
-// 次回eventについて説明
+// aタグの取得
+const aTag = document.getElementById('aTag');
+// イベントの設定
+aTag.addEventListener('click', (event) => {
+  // デフォルトの挙動をキャンセル
+  event.preventDefault();
+  console.log('aタグがクリックされたよ');
+});
