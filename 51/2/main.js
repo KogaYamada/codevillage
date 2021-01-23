@@ -153,11 +153,11 @@ const classA = [
 
 const age = 18;
 
-if (age >= 20) {
-  console.log('大人です');
-} else {
-  console.log('子供です');
-}
+// if (age >= 20) {
+//   console.log('大人です');
+// } else {
+//   console.log('子供です');
+// }
 
 /*
  else - if文: 複数の条件式がある場合
@@ -172,16 +172,38 @@ if (age >= 20) {
 
 const score = 100;
 
-if (score >= 90) {
-  console.log('すごい！');
-} else if (score >= 60) {
-  console.log('まあまあ');
-} else {
-  console.log('頑張ろう');
-}
+// if (score >= 90) {
+//   console.log('すごい！');
+// } else if (score >= 60) {
+//   console.log('まあまあ');
+// } else {
+//   console.log('頑張ろう');
+// }
 
-if (123) {
-  console.log(true);
-} else {
-  console.log(false);
-}
+// if (123) {
+//   console.log(true);
+// } else {
+//   console.log(false);
+// }
+// -----
+const array = [1, 2, 3];
+
+// ここに回答のプログラムを書く
+array.splice(0, 1);
+
+console.log(array); //=> [2, 3]
+
+// ここに回答のプログラムを書く
+array.push(5);
+
+console.log(array); //=> [2, 3, 5]
+
+// ここに回答のプログラムを書く
+array.splice(1, 2);
+
+console.log(array); //=> [2]
+
+// ここに回答のプログラムを書く
+array[0] = 100;
+
+console.log(array); //=> [100]
