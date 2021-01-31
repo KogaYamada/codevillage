@@ -215,7 +215,6 @@ const a = 1;
 // function () {}
 // () => {}
 
-
 // 即時関数: 定義してすぐ実行する関数
 // (function() {
 //   const a = "hello"
@@ -241,3 +240,45 @@ const a = 1;
 //  - 関数の定義方法
 // 2. 制御構文
 // 3. JSON
+
+// 課題
+
+function cointoss() {
+  const num = Math.random();
+  if (num < 0.5) {
+    console.log('表');
+  } else {
+    console.log('裏');
+  }
+}
+
+// for (let i = 0; i < 10; i++) {
+//   cointoss();
+// }
+
+// function scoring(score) {
+//   if (score >= 80) {
+//     return '秀';
+//   } else if (score >= 60) {
+//     return '良';
+//   } else {
+//     return '不可';
+//   }
+// }
+
+// 動作確認
+// console.log(scoring(100)); //=> 秀
+// console.log(scoring(60)); //=> 良
+// console.log(scoring(13)); //=> 不可
+
+// const scores = [13, 67, 18, 54, 30, 22, 89, 49, 21, 65];
+
+// scores.forEach((score) => {
+//   console.log(scoring(score));
+// });
+
+// for (let i = 0; i < scores.length; i++) {
+//   console.log(scoring(scores[i]));
+// }
+
+// return 関数の返り値
