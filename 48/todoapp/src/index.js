@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
-import username from './name';
 
-import Title from './Title';
+import App from './App';
 // import 外部ファイルから何かを読み込む
 // export 外部ファイルへ何かを送る
 
@@ -18,32 +17,5 @@ import Title from './Title';
 // - JSXは一つの要素しか返せない
 
 // 次回コンポーネント切り分け
-
-const Form = () => {
-  return (
-    <form>
-      <input />
-      <button>送信</button>
-    </form>
-  );
-};
-const List = () => {
-  return (
-    <ul>
-      <li>掃除をする</li>
-      <li>洗濯をする</li>
-    </ul>
-  );
-};
-
-const App = () => {
-  return (
-    <>
-      <Title />
-      <Form />
-      <List />
-    </>
-  );
-};
 
 ReactDOM.render(<App />, document.getElementById('root'));
