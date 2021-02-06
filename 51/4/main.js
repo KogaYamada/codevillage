@@ -1,13 +1,23 @@
 // 関数型プログラミング
 
 // 関数のおさらい
+// 引数を受け取って何らかの処理をして返り値を返す
+
 // 引数 - 関数の呼び出し時に選択できる値
 // 返り値 - 関数を呼び出し元に返す値
 // return - 返り値を設定する, 関数を終了する
 
-// function add2(number) {
-//   return number + 2;
-// }
+function add2(number) {
+  return number + 2;
+}
+
+function twice(fn, x) {
+  return fn(fn(x));
+}
+
+const result = twice(function (n) {
+  return n + 2;
+}, 3);
 
 // add2関数の引数を10にして実行する
 // const result = add2(10); // 12
@@ -132,17 +142,35 @@
 
 // オブジェクト指向
 
-// const car = {
-//   meker: 'TOYOTA',
-//   size: '4m',
-//   run: function () {
-//     console.log('車が走ります');
-//   },
-//   stop: function () {
-//     console.log('車がとまります');
-//   },
-// };
+const car = {
+  meker: 'TOYOTA',
+  size: '4m',
+  run: function () {
+    console.log('車が走ります');
+  },
+  stop: function () {
+    console.log('車がとまります');
+  },
+};
 
-// car.run();
+car.run();
 
-// car.meker;
+car.meker;
+
+// JSON
+
+// jsのコードをJSONに変換する場合(エンコード)
+const users = [
+  { name: 'taro', age: 13 },
+  { name: 'jiro', age: 14 },
+  { name: 'hanako', age: 15 },
+];
+console.log('元データ', users);
+// JSON.stringifyメソッドを使う
+const jsonUsers = JSON.stringify(users);
+console.log('JSONに変換したデータ', jsonUsers);
+
+// JSONからJavaScriptに変換する方法(デコード)
+// JSON.parseメソッドを使う
+const decodedUsers = JSON.parse(jsonUsers);
+console.log('JSONからJSに変換したデータ', decodedUsers);
