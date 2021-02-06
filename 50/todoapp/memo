@@ -1,0 +1,45 @@
+- 作業フォルダに移動
+
+- npx create-react-app todoapp
+
+- cd todoapp
+
+- vscode起動
+
+- yarn.lockとpackagelock.jsonは同じなので違ってもOK
+-------
+- npm start
+
+- ブラウザのlocalhost:3000を確認
+
+- 止め方は　control + c
+
+- srcのなかのApp.jsを書き換えてみる
+
+
+-----
+create-react-appで生成されるファイル
+
+- public フォルダ
+    - 静的ファイル(画像,HTMLファイル)を格納する場所
+- src フォルダ
+    - アプリケーションのコードを格納する場所(index.jsが必須)
+- .gitignore
+    - gitで管理しないファイルを書く場所
+- package.json
+    - アプリの情報が載っているファイル
+    - コンピューターが読み取る
+- README.md
+    - アプリの概要を説明するファイル
+- yarn.lockもしくはpackagelock.json
+    - 全ての依存関係の情報が載ったファイル
+-node_modules
+    - 全ての依存関係がインストールされて入っている
+---------
+- control + cでReact終了
+
+- srcの中身を削除
+
+- index.js作成と中身書く
+
+- npm start

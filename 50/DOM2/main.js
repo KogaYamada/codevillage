@@ -21,3 +21,32 @@ addBtn.addEventListener('click', () => {
 });
 
 // 削除ボタンが押された時は要素を削除
+// 1. 削除ボタンを取得する
+// 2. 削除ボタンに対してイベントを設定
+// 3. .list要素の一番最後の要素を削除する
+
+// 1
+const removeButton = document.getElementById('remove');
+// 2
+removeButton.addEventListener('click', () => {
+  // 3
+  if (list.lastElementChild !== null) {
+    list.removeChild(list.lastElementChild);
+  } else {
+    alert('要素がありません');
+  }
+});
+
+// イベント
+const aTag = document.getElementById('aTag');
+const eventButton = document.getElementById('eventButton');
+aTag.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log(e);
+});
+eventButton.addEventListener('click', (event) => {
+  // event === 今回のイベントの内容(出来事)
+  // preeventDefault
+  // HTML要素の持つデフォルトの挙動をキャンセル
+  // event.preventDefault();
+});
