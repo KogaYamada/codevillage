@@ -1,15 +1,22 @@
-const List = ({ todos }) => {
+import Item from './Item';
+
+const List = ({ todos, deleteTodo }) => {
   // propsを渡さなかた場合undefinedが渡ってくる
-  console.log(todos);
 
   return (
     <ul>
       {todos.map((todo) => {
-        return <li key={todo.id}>{todo.content}</li>;
+        return (
+          <Item
+            key={todo.id}
+            content={todo.content}
+            id={todo.id}
+            deleteTodo={deleteTodo}
+          />
+        );
       })}
     </ul>
   );
 };
-// [<li>掃除をする</li>, <li>洗濯をする</li>, <li>料理をする</li>]
 
 export default List;
