@@ -1,0 +1,19 @@
+- srcの中身を全て削除
+
+- src/index.jsxを作成 + 中身を書く
+
+----------------
+- control + cでreact終了
+
+- npm i react-router-dom
+もしくは yarn add react-router-dom
+
+- package.jsonでreact-router-domがあることを確認
+
+- reactを起動
+------------------
+
+- yarn add @material-ui/coreで
+materialuiをインストール
+
+- package.jsonでmaterial-uiがあることを確認
