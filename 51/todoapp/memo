@@ -35,4 +35,21 @@ npm start
 - package.json
     - 今回作成するプロジェクト(アプリ)の情報が載ったファイル
 
-- 次回はREADME.mdの説明から
+- README.md
+    - アプリの概要を書くことができる
+
+- packagelock.json
+    - lockファイル
+    - 全ての依存関係の情報が載ったファイル
+
+- node_modules
+    - 全ての依存関係のあるライブラリが入ったフォルダ
+----------------------
+
+- srcの中身を削除
+
+- srcの中にindex.jsxを作成+中身記述
+
+- control + CでReact開発サーバー終了
+
+- npm startでReact開発サーバー起動
