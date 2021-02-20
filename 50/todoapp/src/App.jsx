@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { nanoid } from 'nanoid';
 import Title from './Title';
 import Form from './Form';
 import List from './List';
@@ -16,16 +17,29 @@ const App = () => {
   console.log('Appコンポーネントが描写されたタイミング', name);
   //   let name = 'たろう'; // stateではない
   const [todos, setTodos] = useState([
-    { content: '掃除をする', id: '1' },
-    { content: '洗濯をする', id: '2' },
-    { content: '料理をする', id: '3' },
+    { content: '掃除をする', id: nanoid() },
+    { content: '洗濯をする', id: nanoid() },
+    { content: '料理をする', id: nanoid() },
   ]);
+
+  // Todoを増やす関数
+  const addTodo = (content) => {
+    setTodos([...todos, { content, id: nanoid() }]);
+    // setTodos(todos.concat({ content, id: `${todos.length + 1}` }));
+  };
+
+  // todoを削除する関数
+  const deleteTodo = (id) => {
+    // filterメソッド
+    // 引数に渡したコールバック関数がtrueを返した要素の配列を生成
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
   return (
     <Fragment>
       <Title username={name} />
-      <Form />
-      <List todos={todos} />
+      <Form addTodo={addTodo} />
+      <List deleteTodo={deleteTodo} todos={todos} />
       <button
         onClick={() => {
           setName('じろう');

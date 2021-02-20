@@ -1,11 +1,20 @@
+import Item from './Item';
+
 // Listコンポーネント
-const List = ({ todos }) => {
+const List = ({ todos, deleteTodo }) => {
   console.log(todos);
   // 配列todosの要素の数だけliタグを生成
   return (
     <ul>
       {todos.map((todo) => {
-        return <li key={todo.id}>{todo.content}</li>;
+        return (
+          <Item
+            deleteTodo={deleteTodo}
+            id={todo.id}
+            content={todo.content}
+            key={todo.id}
+          />
+        );
       })}
     </ul>
   );

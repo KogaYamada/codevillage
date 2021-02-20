@@ -43,3 +43,16 @@ create-react-appで生成されるファイル
 - index.js作成と中身書く
 
 - npm start
+
+--------------------
+
+- control + Cでreactの開発サーバーを終了
+
+- npm i nanoid
+でnanoidのインストール
+
+- package.jsonでnanoidがあることを確認
+
+- App.jsxにnanoidを導入
+
+- npm startで確認
