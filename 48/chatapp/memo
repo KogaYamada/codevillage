@@ -17,3 +17,12 @@
 materialuiをインストール
 
 - package.jsonでmaterial-uiがあることを確認
+
+-----------------
+
+- control + CでReact開発サーバーを終了
+
+- npm i firebase
+もしくは yarn add firebase
+
+- package.jsonでfirebaseがあることを確認
