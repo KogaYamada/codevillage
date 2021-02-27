@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 
-const Title = () => {
+const Title = ({ username }) => {
   return (
     <Fragment>
       <h1>TODOアプリ</h1>
-      <h2>ようこそ、{'name'}さん</h2>
+      <h2>ようこそ、{username}さん</h2>
     </Fragment>
   );
 };
