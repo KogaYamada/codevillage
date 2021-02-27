@@ -10,7 +10,12 @@ const Form = ({ addTodo }) => {
   // formが送信されたタイミングで実行される関数
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (text.trim().length === 0) {
+      alert('文字を入力してください');
+      return;
+    }
     addTodo(text);
+    setText('');
   };
   return (
     <form onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import Item from './Item';
 
 // Listコンポーネント
-const List = ({ todos, deleteTodo }) => {
+const List = ({ todos, deleteTodo, toggleTodo }) => {
   console.log(todos);
   // 配列todosの要素の数だけliタグを生成
   return (
@@ -13,6 +13,8 @@ const List = ({ todos, deleteTodo }) => {
             id={todo.id}
             content={todo.content}
             key={todo.id}
+            isDone={todo.isDone}
+            toggleTodo={toggleTodo}
           />
         );
       })}
