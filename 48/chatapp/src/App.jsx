@@ -4,21 +4,28 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Room from './pages/Room';
 
+import { AuthProvider } from './context/AuthContext';
+import LoggedInRoute from './components/LoggedInRoute';
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/'>
-          <Room />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-        <Route exact path='/signup'>
-          <Signup />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/login'>
+            <Login />
+          </Route>
+          <Route exact path='/signup'>
+            <Signup />
+          </Route>
+          <Route exact path='/'>
+            <LoggedInRoute>
+              <Room />
+            </LoggedInRoute>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 export default App;
