@@ -178,9 +178,9 @@ const mul2 = (x) => x * 2;
 
 const n = 3;
 
-console.log(add2(n)); // 5
-console.log(mul2(n)); // 6
-console.log(mul2(add2(n))); // 10
+// console.log(add2(n)); // 5
+// console.log(mul2(n)); // 6
+// console.log(mul2(add2(n))); // 10
 
 // 次回までに
 // - 関数の復習
@@ -189,3 +189,88 @@ console.log(mul2(add2(n))); // 10
 //  - アロー関数の省略記法
 // - スコープを理解する
 // - 高階関数の予習
+
+function cointoss() {
+  const num = Math.random(); // numは0.0〜1.0のランダムな数値
+
+  // ①ここを埋める
+  if (num < 0.5) {
+    console.log('表');
+  } else {
+    console.log('裏');
+  }
+}
+
+// for (let i = 0; i < 10; i++) {
+//   cointoss();
+// }
+
+// 100 -> 秀
+// 60 -> 良
+// 13 -> 不可
+function scoring(score) {
+  // ここを埋める
+  if (score >= 90) {
+    // 90 ~ で秀
+    return '秀';
+  } else if (score >= 60) {
+    // 60 ~ 89で良
+    return '良';
+  } else {
+    // 59以下で不可
+    return '不可';
+  }
+}
+
+// 動作確認
+// console.log(scoring(100)); //=> 秀
+// console.log(scoring(60)); //=> 良
+// console.log(scoring(13)); //=> 不可
+
+const scores = [13, 67, 18, 54, 30, 22, 89, 49, 21, 65];
+
+scores.forEach(function (score) {
+  console.log(scoring(score));
+});
+
+// for (let i = 0; i < scores.length; i++) {
+//   console.log(scoring(scores[i]));
+// }
+
+const items = [
+  // ここを埋める
+  { n: 100 },
+  { a: { b: ['abc'] }, c: { 100: 'foobar' } },
+];
+// itemsは2つの要素の配列
+
+// console.log(items[0].n); //=> 100
+// console.log(items[1].a.b[0]); //=> abc
+// console.log(items[1].c['100']); //=> foobar
+
+const json = `
+{
+  "total": 2,
+  "items": [
+    {
+      "name": "Item 123",
+      "id": 123
+    },
+    {
+      "name": "Item 456",
+      "id": 456
+    }
+  ],
+  "next": {
+    "id": 789
+  }
+}
+`;
+
+const obj = JSON.parse(json);
+console.log(obj.total); // => 2
+console.log(obj.items[0].name); //=> Item 123
+console.log(obj.items[0].id); //=> 123
+console.log(obj.items[1].name); //=> Item 456
+console.log(obj.items[1].id); //=> 456
+console.log(obj.next.id); //=> 789
