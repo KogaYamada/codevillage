@@ -1,9 +1,10 @@
+import Item from './Item';
+
 const List = ({ todos }) => {
-  console.log(todos);
   return (
     <ul>
       {todos.map((todo) => {
-        return <li key={todo.id}>{todo.content}</li>;
+        return <Item key={todo.id} content={todo.content} />;
       })}
     </ul>
   );

@@ -1,10 +1,14 @@
 import { Fragment, useState } from 'react';
+import { nanoid } from 'nanoid';
 import Title from './Title';
 import Form from './Form';
 import List from './List';
 
 // 見た目に関わる変数を扱う時はstateを使用
 // -> 変数は全てstateでも最悪OK
+
+// TODOの削除
+// 完了したことがわかるようにする
 
 const App = () => {
   //stateのnameを定義
@@ -14,21 +18,26 @@ const App = () => {
   const [todos, setTodos] = useState([
     {
       content: '掃除をする',
-      id: '1',
+      id: nanoid(),
     },
     {
       content: '洗濯をする',
-      id: '2',
+      id: nanoid(),
     },
     {
       content: '運動をする',
-      id: '3',
+      id: nanoid(),
     },
   ]);
+  console.log(todos);
+  const addTodo = (text) => {
+    setTodos([...todos, { content: text, id: nanoid() }]);
+  };
+
   return (
     <Fragment>
       <Title username={name} />
-      <Form />
+      <Form addTodo={addTodo} />
       <List todos={todos} />
       <button
         onClick={() => {
@@ -44,5 +53,3 @@ const App = () => {
 };
 
 export default App;
-
-// 16:06まで休憩

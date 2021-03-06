@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-const Form = () => {
+const Form = ({ addTodo }) => {
   // inputの入力された内容を表すstate
   const [text, setText] = useState('');
 
   // formが送信された時に実行される関数
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(text);
+    addTodo(text);
   };
   return (
     <form onSubmit={handleSubmit}>
