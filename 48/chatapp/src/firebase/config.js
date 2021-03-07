@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 // firebaseで使うサービスを別途import
 import 'firebase/auth';
+import 'firebase/firestore';
 
 // このファイルはfirebaseの基本設定など書く
 // Your web app's Firebase configuration
@@ -19,5 +20,6 @@ firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
 export const auth = firebase.auth();
+export const db = firebase.firestore();
 
 export default firebase;
