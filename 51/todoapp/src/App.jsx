@@ -19,26 +19,34 @@ const App = () => {
     {
       content: '掃除をする',
       id: nanoid(),
+      isDone: false,
     },
     {
       content: '洗濯をする',
       id: nanoid(),
+      isDone: false,
     },
     {
       content: '運動をする',
       id: nanoid(),
+      isDone: false,
     },
   ]);
-  console.log(todos);
+
   const addTodo = (text) => {
     setTodos([...todos, { content: text, id: nanoid() }]);
+  };
+
+  // todosから引数に取ったidと一致しない要素を残したtodosを作成する
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <Fragment>
       <Title username={name} />
       <Form addTodo={addTodo} />
-      <List todos={todos} />
+      <List todos={todos} deleteTodo={deleteTodo} />
       <button
         onClick={() => {
           // setName関数の引数に入れた値が新しいstateの値になる

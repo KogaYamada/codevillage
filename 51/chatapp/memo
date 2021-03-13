@@ -1,0 +1,11 @@
+- npx create-react-app chatapp
+
+- cd chatapp
+
+- vscodeでchatappを開く
+
+- srcの中身を削除
+
+- index.jsx作成
+
+- npm start
