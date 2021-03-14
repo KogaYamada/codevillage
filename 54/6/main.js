@@ -12,6 +12,11 @@ addButton.addEventListener('click', () => {
 });
 // 削除ボタンのクリックイベントの設定
 removeButton.addEventListener('click', () => {
+  const lastElement = list.lastElementChild;
+  if (lastElement === null) {
+    alert('アイテムがありません');
+    return;
+  }
   const result = confirm('アイテムを削除してよろしいですか？');
   if (result) {
     list.removeChild(list.lastElementChild);
