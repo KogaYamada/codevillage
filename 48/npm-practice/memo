@@ -1,0 +1,36 @@
+- 新しい作業ファイル開いてnpm init
+
+- 質問に答える
+
+- package.json作成されるので確認
+
+ーーーーーー
+
+- yarn -v
+
+- npm i -g yarn
+
+- yarn -v
+
+---------
+
+npm i react
+or
+yarn add react
+
+npm uninstall react
+or
+yarn remove react
+
+npm i react@16.13.1
+or
+yarn add react@16.13.1
+
+--------
+npm uninstall react react-dom
+or
+yarn remove react react-dom
+
+npm i -D jest
+or
+yarn add -D jest
