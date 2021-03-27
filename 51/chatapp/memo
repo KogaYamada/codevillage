@@ -9,3 +9,11 @@
 - index.jsx作成
 
 - npm start
+
+-------------------
+
+- npm i firebase
+or
+- yarn add firebase
+
+- package.json確認
