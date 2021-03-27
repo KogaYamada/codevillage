@@ -15,9 +15,12 @@ export const AuthProvider = ({ children }) => {
     // - ログイン状態が切り替わると実行
     // - ユーザーがログイン状態ならユーザーの情報、
     //   ログインしていなければnull
-    auth.onAuthStateChanged((userState) => {
+    const unsubscribe = auth.onAuthStateChanged((userState) => {
       setUser({ loading: false, data: userState });
     });
+    return () => {
+      unsubscribe();
+    };
   }, []);
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };
