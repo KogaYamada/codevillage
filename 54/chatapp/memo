@@ -1,0 +1,24 @@
+## create-react-app終わったら
+
+- cd chatapp
+
+- npm start
+
+## React開発サーバー起動したら
+
+- srcの中身削除
+
+- src/index.jsx作成 + 中身書く
+
+- React開発サーバー再起動
+
+-------------------------
+- npm i react-router-dom
+
+- pagesフォルダ作成してそれぞれのページ作成
+
+- npm start
+-------------------------
+
+- material uiをインストール
+

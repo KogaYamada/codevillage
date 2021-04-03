@@ -4,19 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import firebase, { auth, db } from '../firebase/config';
 import { AuthContext } from '../context/AuthContext';
 import Form from '../components/Form';
+import ChatItem from '../components/ChatItem';
+
 const useStyles = makeStyles({
   cardConteiner: {
     backgroundColor: '#EEE',
   },
-  card: {
-    width: '300px',
-    padding: '15px',
-    margin: '10px',
-  },
 });
 
-// 次回: 削除機能(自分の投稿を削除できる)
-//      ならびかえ
+// 来週: セキュリティルール削除
 
 const Room = () => {
   const classes = useStyles();
@@ -37,6 +33,7 @@ const Room = () => {
         username: user.data.displayName,
         content: text,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        authorId: user.data.uid,
       })
       .then(() => {
         console.log('チャット送信成功');
@@ -45,17 +42,31 @@ const Room = () => {
         console.log('チャット送信失敗', err);
       });
   };
+  // チャットを削除する関数
+  const deleteChat = (id) => {
+    db.collection('messages')
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log('削除成功');
+      })
+      .catch((err) => {
+        console.log('削除失敗', err);
+      });
+  };
 
   // firestoreのmessagesを取得
   useEffect(() => {
     // get: 実行されたタイミングのデータを取得
     // onSnapshot: firestoreのデータの変更を監視して、変更があればデータを取得する
     const messagesRef = db.collection('messages');
-    const unsubscribe = messagesRef.onSnapshot((querySnapshot) => {
-      setMessages(
-        querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-    });
+    const unsubscribe = messagesRef
+      .orderBy('createdAt')
+      .onSnapshot((querySnapshot) => {
+        setMessages(
+          querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        );
+      });
     // コンポーネントがアンマウントされる直前に実行
     return () => {
       unsubscribe();
@@ -68,17 +79,21 @@ const Room = () => {
     //   setMessages(data);
     // });
   }, []);
-  console.log(messages);
 
   return (
     <>
       <h1>チャットページ</h1>
       <div className={classes.cardConteiner}>
         {messages.map((message) => (
-          <Card key={message.id} className={classes.card}>
-            <Typography>{message.username}</Typography>
-            <Typography>{message.content}</Typography>
-          </Card>
+          <ChatItem
+            key={message.id}
+            username={message.username}
+            content={message.content}
+            onClick={() => {
+              deleteChat(message.id);
+            }}
+            isAuthor={user.data.uid === message.authorId}
+          />
         ))}
       </div>
       <Form onSubmit={addChat} />
@@ -103,5 +118,3 @@ export default Room;
 //     },
 //   },
 // };
-
-// 5ふんま休憩

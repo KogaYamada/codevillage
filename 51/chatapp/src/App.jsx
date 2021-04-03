@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Room from './pages/Room';
 import { AuthProvider } from './context/AuthContext';
+import LoggedInRoute from './compoentns/LoggedInRoute';
 
 // URLによって表示するページを変更したい
 
@@ -19,7 +20,9 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path='/'>
-            <Room />
+            <LoggedInRoute>
+              <Room />
+            </LoggedInRoute>
           </Route>
           <Route exact path='/signup'>
             <Signup />

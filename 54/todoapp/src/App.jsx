@@ -21,11 +21,16 @@ const App = () => {
     // スプレッド構文
     setTodos([...todos, { content: text, id: nanoid() }]);
   };
+  const deleteTodo = (id) => {
+    // テスト関数:配列の要素(todo)のidと引数に取ったidと一致しないものがテストをパス
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
   return (
     <>
       <Title />
       <Form addTodo={addTodo} />
-      <List todos={todos} />
+      <List todos={todos} deleteTodo={deleteTodo} />
     </>
   );
 };

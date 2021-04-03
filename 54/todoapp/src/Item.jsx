@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 // 次回:削除機能から
 
-const Item = ({ content }) => {
+const Item = ({ content, deleteTodo, id }) => {
   // チェックボックスのチェック状態
   const [isDone, setIsDone] = useState(false);
   return (
@@ -18,7 +18,7 @@ const Item = ({ content }) => {
       <span style={{ textDecoration: isDone ? 'line-through' : 'none' }}>
         {content}
       </span>
-      <button>削除</button>
+      <button onClick={() => deleteTodo(id)}>削除</button>
     </li>
   );
 };

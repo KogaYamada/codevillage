@@ -1,5 +1,8 @@
 import firebase from 'firebase/app';
+// firebaseのauth(認証機能を使います)
 import 'firebase/auth';
+// firebaseのfirestore(データベースを使います)
+import 'firebase/firestore';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -17,3 +20,4 @@ firebase.initializeApp(firebaseConfig);
 
 export default firebase;
 export const auth = firebase.auth();
+export const db = firebase.firestore();
