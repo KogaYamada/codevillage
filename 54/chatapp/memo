@@ -22,3 +22,9 @@
 
 - material uiをインストール
 
+-------------------------
+
+必要なライブラリのインストール
+- npm i firebase react-router-dom
+or
+- yarn add firebase react-router-dom

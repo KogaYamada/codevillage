@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import {
   Button,
-  TextField,
   Card,
   CardHeader,
   CardContent,
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { auth } from '../firebase/config';
+import firebase, { auth } from '../firebase/config';
 import { AuthContext } from '../context/AuthContext';
 import { db } from '../firebase/config';
+import ChatForm from '../compoentns/ChatForm';
+import DeleteDialog from '../compoentns/DeleteDialog';
 
 // グローバルステートを用いてユーザーのログイン状態を全てのページから参照できるようにする
 // Roomページでユーザーがログインしていない状態の時はログインページにリダイレクトさせるようにする
@@ -32,8 +33,10 @@ const useStyles = makeStyles({
 
 const Room = () => {
   const classes = useStyles();
-  const value = useContext(AuthContext);
+  const authState = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
+  const [deleteChatId, setDeleteChatId] = useState('');
+  const messagesRef = db.collection('messages');
 
   const logout = () => {
     auth
@@ -41,39 +44,63 @@ const Room = () => {
       .then(() => console.log('ログアウト成功'))
       .catch(() => console.log('ログアウト失敗'));
   };
+  const addChat = (text) => {
+    if (authState.loading || authState.user == null) {
+      return;
+    }
+    messagesRef.add({
+      content: text,
+      username: authState.user.displayName,
+      authorId: authState.user.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  };
 
   useEffect(() => {
-    db.collection('messages')
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => ({
+    // リファレンスに対してリスナーを設定する
+    // リファレンスのデータに変更があった時に実行される
+    messagesRef.orderBy('createdAt', 'desc').onSnapshot((querySnapshot) => {
+      const data = querySnapshot.docs.map((doc) => {
+        return {
           ...doc.data(),
           id: doc.id,
-        }));
-        console.log(data);
-        setMessages(data);
-      })
-      .catch((err) => {
-        console.log('ユーザー取得失敗', err);
+        };
       });
+      setMessages(data);
+    });
+    // messagesRef
+    //   .get()
+    //   .then((querySnapshot) => {
+    //     const data = querySnapshot.docs.map((doc) => ({
+    //       ...doc.data(),
+    //       id: doc.id,
+    //     }));
+    //     console.log(data);
+    //     setMessages(data);
+    //   })
+    //   .catch((err) => {
+    //     console.log('ユーザー取得失敗', err);
+    //   });
   }, []);
 
   return (
     <div className={classes.root}>
       <h1>チャットルーム</h1>
-      <form>
-        <TextField placeholder='チャットを入力...' />
-        <Button variant='contained' color='primary'>
-          送信
-        </Button>
-      </form>
+      <ChatForm addChat={addChat} />
       <div className={classes.cardContainer}>
         {messages.map((message) => {
           return (
             <Card key={message.id} className={classes.card}>
               <CardHeader
                 title={message.username}
-                action={<Button variant='contained'>削除</Button>}
+                action={
+                  <Button
+                    onClick={() => setDeleteChatId(message.id)}
+                    variant='contained'
+                  >
+                    削除
+                  </Button>
+                }
               />
               <CardContent>
                 <Typography>{message.content}</Typography>
@@ -83,6 +110,7 @@ const Room = () => {
         })}
       </div>
       <Button onClick={logout}>ログアウト</Button>
+      <DeleteDialog id={deleteChatId} onCancel={() => setDeleteChatId('')} />
     </div>
   );
 };
