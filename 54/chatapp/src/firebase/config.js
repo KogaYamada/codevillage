@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 // 使用する機能をインポート
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDz3mixTueBsGiM217MgfF8HTIPZAgSVP0',
@@ -15,5 +16,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
+export const db = firebase.firestore();
 
 export default firebase;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase/config';
 import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -21,8 +22,14 @@ const Login = () => {
 
   const handleSubimt = (e) => {
     e.preventDefault();
-    console.log('email', email);
-    console.log('password', password);
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log('ログイン成功', userCredential);
+      })
+      .catch((err) => {
+        console.log('ログイン失敗', err);
+      });
   };
   return (
     <form onSubmit={handleSubimt} className={classes.root}>

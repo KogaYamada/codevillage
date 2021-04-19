@@ -52,6 +52,16 @@ const Room = () => {
           return { ...doc.data(), id: doc.id };
         });
         setMessages(messages);
+        function sound(type, sec) {
+          const ctx = new AudioContext();
+          const osc = ctx.createOscillator();
+          osc.type = type;
+          osc.connect(ctx.destination);
+          osc.start();
+          osc.stop(sec);
+        }
+
+        sound('square', 0.3);
       });
     // db.collection('messages')
     //   .get()

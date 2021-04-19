@@ -56,6 +56,14 @@ const Room = () => {
     });
   };
 
+  const deleteChat = (id) => {
+    db.collection('messages')
+      .doc(id)
+      .delete()
+      .then(() => setDeleteChatId(''))
+      .catch((err) => console.log('削除失敗', err));
+  };
+
   useEffect(() => {
     // リファレンスに対してリスナーを設定する
     // リファレンスのデータに変更があった時に実行される
@@ -94,12 +102,14 @@ const Room = () => {
               <CardHeader
                 title={message.username}
                 action={
-                  <Button
-                    onClick={() => setDeleteChatId(message.id)}
-                    variant='contained'
-                  >
-                    削除
-                  </Button>
+                  authState.user.uid === message.authorId && (
+                    <Button
+                      onClick={() => setDeleteChatId(message.id)}
+                      variant='contained'
+                    >
+                      削除
+                    </Button>
+                  )
                 }
               />
               <CardContent>
@@ -110,7 +120,11 @@ const Room = () => {
         })}
       </div>
       <Button onClick={logout}>ログアウト</Button>
-      <DeleteDialog id={deleteChatId} onCancel={() => setDeleteChatId('')} />
+      <DeleteDialog
+        id={deleteChatId}
+        onOk={deleteChat}
+        onCancel={() => setDeleteChatId('')}
+      />
     </div>
   );
 };
