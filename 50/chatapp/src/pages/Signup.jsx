@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { auth } from '../firebase/config';
+import { useInput } from '../hooks/useInput';
 
 const useStyles = makeStyles({
   root: {
@@ -22,18 +22,20 @@ const useStyles = makeStyles({
 const Signup = () => {
   const history = useHistory();
   const classes = useStyles();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const username = useInput('');
+  const email = useInput('');
+  const password = useInput('');
+  console.log(username);
+  console.log(email);
+  console.log(password);
   const handleSubmit = (e) => {
     e.preventDefault();
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email.value, password.value)
       // then: 直前の非同期処理が成功した時に実行されるメソッド
       .then((userCredential) => {
         userCredential.user
-          .updateProfile({ displayName: username })
+          .updateProfile({ displayName: username.value })
           .then(() => {
             console.log('ユーザー作成成功', userCredential);
             history.push('/');
@@ -48,24 +50,21 @@ const Signup = () => {
     <form className={classes.root} onSubmit={handleSubmit}>
       <h1>ユーザー登録ページ</h1>
       <TextField
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        {...username}
         fullWidth
         type='text'
         label='ユーザー名'
         variant='standard'
       />
       <TextField
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        {...email}
         fullWidth
         type='email'
         label='メールアドレス'
         variant='filled'
       />
       <TextField
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        {...password}
         fullWidth
         type='password'
         label='パスワード'

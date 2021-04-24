@@ -1,0 +1,13 @@
+- cd ..
+- npx create-react-app more-hooks
+
+cd more-hooks
+
+code .
+
+
+--------
+
+srcの中消す
+
+index.jsx、App.jsx作成
