@@ -15,13 +15,19 @@ const useStyles = makeStyles({
   },
 });
 
-const ChatItem = ({ username, body }) => {
+const ChatItem = ({ username, body, isAuthor, onClick }) => {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
       <CardHeader
         title={username}
-        action={<Button variant='contained'>削除</Button>}
+        action={
+          isAuthor && (
+            <Button onClick={onClick} variant='contained'>
+              削除
+            </Button>
+          )
+        }
       />
       <CardContent>
         <Typography>{body}</Typography>

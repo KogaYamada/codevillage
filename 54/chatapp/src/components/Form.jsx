@@ -1,10 +1,21 @@
+import { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 
-const Form = () => {
+const Form = ({ addChat }) => {
+  const [text, setText] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addChat(text);
+  };
   return (
-    <form>
-      <TextField variant='outlined' placeholder='チャットを入力...' />
-      <Button variant='contained' color='secondary'>
+    <form onSubmit={handleSubmit}>
+      <TextField
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        variant='outlined'
+        placeholder='チャットを入力...'
+      />
+      <Button type='submit' variant='contained' color='secondary'>
         送信
       </Button>
     </form>
