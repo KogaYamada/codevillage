@@ -1,5 +1,13 @@
-import { useReducer } from 'react';
+import {
+  useReducer,
+  useMemo,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import ShowNumebr from './ShowNumber';
+import ListNumbers from './ListNumbers';
 // 関数型コンポーネントでstateを扱う方法
 // - useState
 // - useReducer
@@ -23,11 +31,25 @@ const reducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [data, setData] = useState([]);
+  const ref = useRef(null);
+  // Appが実行されるごとにdataArrayが生成される
+  const dataArray = useMemo(() => {
+    return data.map((d) => d * 10);
+  }, [data]);
+  useEffect(() => {
+    setData([1, 2, 3, 4, 5]);
+  }, []);
 
+  const sayHello = useCallback(() => {
+    ref.current.focus();
+  }, []);
   return (
     <>
       <h1>カウンターアプリ</h1>
-      <ShowNumebr number={100} />
+      <input ref={ref} />
+      <ShowNumebr number={100} onClick={sayHello} />
+      <ListNumbers dataArray={dataArray} />
       <h2>現在のカウント:{state.count}</h2>
       <button onClick={() => dispatch({ type: 'increment', payload: 1 })}>
         + 1

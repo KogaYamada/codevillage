@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 const Room = () => {
   const classes = useStyles();
   const authState = useContext(AuthContext);
+  console.log(authState);
   const [messages, setMessages] = useState([]);
   const [deleteChatId, setDeleteChatId] = useState('');
   const logout = () => {
@@ -37,9 +38,10 @@ const Room = () => {
       .delete()
       .then(() => {
         console.log('削除完了');
+        closeDialog();
       })
       .catch((err) => {
-        console.log('削除失敗');
+        console.log('削除失敗', err);
       });
   };
 
@@ -64,7 +66,7 @@ const Room = () => {
     // リスナーを設定している(きっかけを待っている)
     // messagesRefのデータの変更があった時にデータ取得
     // 初回実行時にもデータ取得
-    messagesRef.onSnapshot((querySnapshot) => {
+    messagesRef.orderBy('createdAt').onSnapshot((querySnapshot) => {
       const data = querySnapshot.docs.map((doc) => {
         return {
           ...doc.data(),
@@ -109,7 +111,7 @@ const Room = () => {
       <Button onClick={logout}>ログアウト</Button>
       <DeleteDialog
         open={deleteChatId !== ''}
-        onOk={closeDialog}
+        onOk={() => deleteChat(deleteChatId)}
         onCancel={closeDialog}
       />
     </div>
