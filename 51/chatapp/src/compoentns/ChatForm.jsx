@@ -23,3 +23,18 @@ const ChatForm = ({ addChat }) => {
 };
 
 export default ChatForm;
+
+// presentational component
+// 見た目だけ作成する
+// ロジック(処理)は持たない
+
+// container component
+// ロジックを持ってpresentational componentに対してデータを渡す
+
+// テスト
+
+// 単体テスト(unit test)
+
+// 結合テスト(integration test)
+
+// E2Eテスト(end to end)

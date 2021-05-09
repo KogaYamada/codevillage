@@ -1,0 +1,10 @@
+- 作業ディレクトリに移動して mkdir test
+
+- cd test
+
+- npm init -y
+
+- npm i jest
+
+- touch script.test.js script.js
+

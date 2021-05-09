@@ -28,3 +28,29 @@
 - npm i firebase react-router-dom
 or
 - yarn add firebase react-router-dom
+
+---------------------------
+
+
+Reactのコンポーネント設計
+
+- presentational component and container component
+参照透過なコンポーネントと値を流し込むコンポーネント
+presentational component:
+    - propsを受け取ってUIを返すだけのコンポーネント
+    - ロジックを持たない
+
+container component: presentational componentを組み合わせてそれぞれのコンポーネントにpropsを渡すコンポーネント
+    - ロジックを持つ
+
+- atomic design
+
+
+テスト
+
+- 単体テスト(unit test)
+    - 関数の単位でテストをする
+- 結合テスト(integration test)
+    - 一連の処理でテストをする
+- E2Eテスト(end to end)
+    - 仮想的にブラウザを立ち上げてテストをする

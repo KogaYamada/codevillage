@@ -1,0 +1,13 @@
+- 作業ディレクトリ移動
+
+- unit-testフォルダ作成
+
+- vscode立ち上げ
+
+- npm init -y
+
+- npm i jest
+
+- script.js script.test.js作成
+
+
