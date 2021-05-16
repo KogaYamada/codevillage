@@ -1,0 +1,5 @@
+- serverフォルダの中で npm init -y
+
+- npm i nodemon express cors
+
+- server.jsを作成
