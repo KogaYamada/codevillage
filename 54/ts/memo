@@ -1,0 +1,21 @@
+- npx create-react-app ts-todo --template typescript
+
+- tsフォルダ作成
+
+- tsフォルダに移動& VScode起動
+
+-----------------------------
+
+- npm init -y
+
+- npm i typescript
+
+- npx tsc --init
+
+- tsconfig.jsonを編集
+    "outDir": "./build" /* Redirect output structure to the directory. */,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+
+- srcフォルダ作成 + main.ts作成
+
+- npx tsc

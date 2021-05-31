@@ -13,9 +13,9 @@ import List from './List';
 
 const App = () => {
   const [todos, setTodos] = useState([
-    { content: '掃除をする', id: nanoid() },
-    { content: '洗濯をする', id: nanoid() },
-    { content: '料理をする', id: nanoid() },
+    { content: '掃除をする', id: nanoid(), isDone: false },
+    { content: '洗濯をする', id: nanoid(), isDone: true },
+    { content: '料理をする', id: nanoid(), isDone: false },
   ]);
   const addTodo = (text) => {
     // スプレッド構文
@@ -26,11 +26,23 @@ const App = () => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   };
+
+  const toggleIsDone = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isDone: !todo.isDone };
+        }
+        return todo;
+      })
+    );
+  };
+
   return (
     <>
       <Title />
       <Form addTodo={addTodo} />
-      <List todos={todos} deleteTodo={deleteTodo} />
+      <List toggleIsDone={toggleIsDone} todos={todos} deleteTodo={deleteTodo} />
     </>
   );
 };

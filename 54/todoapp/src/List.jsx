@@ -1,6 +1,6 @@
 import Item from './Item';
 
-const List = ({ todos, deleteTodo }) => {
+const List = ({ todos, deleteTodo, toggleIsDone }) => {
   // 配列をもとに新しい配列を生成: mapメソッド
   console.log(todos);
   return (
@@ -12,6 +12,8 @@ const List = ({ todos, deleteTodo }) => {
             id={todo.id}
             deleteTodo={deleteTodo}
             content={todo.content}
+            isDone={todo.isDone}
+            toggleIsDone={toggleIsDone}
           />
         );
       })}

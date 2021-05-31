@@ -1,0 +1,11 @@
+- npm i -D typescript
+
+- srcの中身消す
+
+- index.tsx作成
+
+- 型定義ファイルがない場合
+
+- npx typesync
+
+- npm i
